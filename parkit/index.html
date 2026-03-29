@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파킷 (Parkit) - 차에서 내리면 자동으로 기록해요</title>
+    <meta name="description" content="차량 블루투스 해제를 감지하여 주차 위치를 자동으로 기록하는 iOS 앱">
+    <meta property="og:title" content="파킷 (Parkit)">
+    <meta property="og:description" content="차에서 내리면 자동으로 주차 위치를 기록해요">
+    <meta property="og:image" content="https://berry-yoo.github.io/parkit/images/promo_02_main.png">
+    <meta property="og:url" content="https://berry-yoo.github.io/parkit/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/app-icon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --brand: #F35E3B;
+            --brand-dark: #D94E2E;
+            --bg: #ffffff;
+            --bg-alt: #f8f8f8;
+            --text: #1a1a1a;
+            --text-secondary: #666666;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --bg-alt: #1a1a1a;
+                --text: #f0f0f0;
+                --text-secondary: #999999;
+                --card-bg: #222222;
+                --card-shadow: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+            padding: 80px 24px 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 320px;
+            margin: 0 auto 32px;
+            line-height: 1.5;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 12px 28px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 36px;
+            color: var(--text);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px var(--card-shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .feature-icon.bt { background: rgba(243, 94, 59, 0.12); }
+        .feature-icon.ocr { background: rgba(0, 122, 255, 0.12); }
+        .feature-icon.gps { background: rgba(52, 199, 89, 0.12); }
+
+        .feature-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Screenshots */
+        .screenshots {
+            padding: 40px 0 60px;
+            background: var(--bg-alt);
+        }
+
+        .screenshots h2 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 28px;
+            padding: 0 24px;
+            color: var(--text);
+        }
+
+        .screenshot-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 24px 16px;
+            scrollbar-width: none;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar { display: none; }
+
+        .screenshot-scroll img {
+            width: 240px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            scroll-snap-align: center;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(128, 128, 128, 0.15);
+        }
+
+        .footer-links {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--brand);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 12px;
+        }
+
+        .footer-links a:hover { text-decoration: underline; }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (min-width: 640px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .feature-card {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .screenshot-scroll {
+                justify-content: center;
+                padding: 0 40px 16px;
+            }
+            .screenshot-scroll img {
+                width: 220px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero { padding: 100px 24px 80px; }
+            .hero h1 { font-size: 44px; }
+            .hero p { font-size: 20px; }
+            .screenshot-scroll img { width: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="images/app-icon.png" alt="파킷 앱 아이콘" class="hero-icon">
+        <h1>파킷</h1>
+        <p>차에서 내리면<br>자동으로 주차 위치를 기록해요</p>
+        <span class="hero-badge">App Store 출시 예정</span>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <h2>이렇게 동작해요</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon bt">📡</div>
+                <div>
+                    <h3>블루투스 자동 감지</h3>
+                    <p>차량 블루투스 연결이 끊기면 자동으로 주차 알림을 보내요</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon ocr">📷</div>
+                <div>
+                    <h3>카메라로 자동 입력</h3>
+                    <p>주차 표지판을 찍으면 층수와 구역을 바로 인식해요</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon gps">📍</div>
+                <div>
+                    <h3>언제든 다시 찾기</h3>
+                    <p>GPS 위치와 층수, 구역까지 한눈에 확인할 수 있어요</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="screenshots">
+        <h2>앱 미리보기</h2>
+        <div class="screenshot-scroll">
+            <img src="images/promo_01_splash.png" alt="파킷 스플래시 화면" loading="lazy">
+            <img src="images/promo_02_main.png" alt="파킷 메인 화면" loading="lazy">
+            <img src="images/promo_03_record.png" alt="파킷 주차 기록 화면" loading="lazy">
+            <img src="images/promo_04_camera.png" alt="파킷 카메라 인식 화면" loading="lazy">
+            <img src="images/promo_05_detail.png" alt="파킷 기록 상세 화면" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="privacy/">개인정보처리방침</a>
+            <a href="mailto:berry.yoo.dev@gmail.com">문의하기</a>
+        </div>
+        <p>&copy; 2026 Berry Yoo. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
