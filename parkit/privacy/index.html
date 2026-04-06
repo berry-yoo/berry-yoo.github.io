@@ -46,7 +46,7 @@
         <div class="lang-switch"><a href="#english">English ↓</a></div>
 
         <h1>파킷(Parkit) 개인정보처리방침</h1>
-        <p class="date">최종 수정일: 2026년 3월 31일 | 시행일: 2026년 3월 31일</p>
+        <p class="date">최종 수정일: 2026년 4월 6일 | 시행일: 2026년 4월 6일</p>
 
         <h2>1. 개요</h2>
         <p>파킷(Parkit, 이하 "앱")은 개인 개발자가 운영하며, 차량 블루투스 연결 해제를 감지하여 주차 위치를 자동으로 기록하는 iOS 앱입니다.</p>
@@ -60,7 +60,7 @@
             <li><strong>수집 시점</strong>: 차량 블루투스 해제 감지 시 또는 수동 주차 기록 시 (1회성)</li>
             <li><strong>수집 목적</strong>: 주차 위치 표시 및 길찾기 기능 제공</li>
             <li><strong>저장 위치</strong>: 기기 로컬 (SwiftData)</li>
-            <li><strong>보유 기간</strong>: 사용자가 삭제할 때까지</li>
+            <li><strong>보유 기간</strong>: 서비스 이용 목적 달성 시까지 또는 사용자 삭제 요청 시. 앱 삭제 시 즉시 파기</li>
         </ul>
 
         <h3>2.2 블루투스 기기 정보</h3>
@@ -121,27 +121,69 @@
 
         <h2>5. 데이터 보관 및 삭제</h2>
         <ul>
+            <li>개인정보는 수집 목적이 달성되면 지체 없이 파기합니다.</li>
             <li>앱 내에서 개별 기록을 직접 삭제할 수 있습니다.</li>
-            <li>앱을 삭제하면 기기 내 모든 데이터가 완전히 제거됩니다.</li>
+            <li>앱을 삭제하면 iOS에 의해 앱 샌드박스 내 모든 데이터가 복구 불가능한 방법으로 완전히 제거됩니다.</li>
             <li>iCloud 동기화를 사용한 경우, iCloud에 저장된 데이터는 설정 > iCloud 저장 공간에서 별도로 삭제할 수 있습니다.</li>
         </ul>
 
-        <h2>6. 아동의 개인정보 보호</h2>
-        <p>앱은 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
+        <h2>6. 정보주체의 권리와 행사 방법</h2>
+        <p>사용자는 언제든지 다음 권리를 행사할 수 있습니다.</p>
+        <ul>
+            <li>개인정보 열람 요청</li>
+            <li>개인정보 정정 및 삭제 요청</li>
+            <li>개인정보 처리 정지 요청</li>
+        </ul>
+        <p>위 권리는 앱 내에서 직접 행사하거나(기록 삭제, 권한 설정 변경, iCloud 동기화 끄기), 아래 이메일로 요청할 수 있습니다. 요청 시 지체 없이 조치하겠습니다.</p>
+        <p>📧 <a href="mailto:berry.yoo.dev@gmail.com">berry.yoo.dev@gmail.com</a></p>
 
-        <h2>7. 보안</h2>
-        <p>모든 데이터는 iOS 앱 샌드박스 보안 체계에 의해 보호됩니다. iCloud 동기화 사용 시 Apple의 암호화 전송이 적용됩니다.</p>
+        <h2>7. 권한 거부 시 제한 사항</h2>
+        <p>앱에서 요청하는 권한을 거부하더라도 앱 사용은 가능하지만, 일부 기능이 제한될 수 있습니다.</p>
+        <ul>
+            <li><strong>위치 권한 거부</strong>: 주차 위치 GPS 기록 및 지도 표시 불가</li>
+            <li><strong>블루투스 권한 거부</strong>: 차량 블루투스 해제 자동 감지 불가</li>
+            <li><strong>카메라 권한 거부</strong>: 주차 표지판 OCR 자동 인식 불가</li>
+            <li><strong>알림 권한 거부</strong>: 주차 기록 알림 수신 불가</li>
+        </ul>
 
-        <h2>8. 개인정보처리방침 변경</h2>
-        <p>변경 시 이 페이지를 통해 공지하며, 시행일을 업데이트합니다.</p>
+        <h2>8. 아동의 개인정보 보호</h2>
+        <p>앱은 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다. 만 14세 미만 아동의 개인정보가 수집된 것을 발견한 경우, 즉시 해당 정보를 삭제하겠습니다.</p>
 
-        <h2>9. 문의</h2>
+        <h2>9. 보안</h2>
+        <p>앱은 다음과 같은 안전성 확보 조치를 적용합니다.</p>
+        <ul>
+            <li>iOS 앱 샌드박스에 의한 데이터 격리 및 보호</li>
+            <li>iOS Data Protection에 의한 기기 내 파일 암호화</li>
+            <li>iCloud 동기화 시 Apple의 종단간 암호화 전송 적용</li>
+            <li>Face ID/Touch ID는 iOS Secure Enclave에서 처리되며, 앱이 생체 데이터에 접근하지 않음</li>
+        </ul>
+
+        <h2>10. 개인정보 보호책임자</h2>
+        <ul>
+            <li><strong>성명</strong>: 유형진</li>
+            <li><strong>직책</strong>: 개인 개발자 (1인 운영)</li>
+            <li><strong>연락처</strong>: <a href="mailto:berry.yoo.dev@gmail.com">berry.yoo.dev@gmail.com</a></li>
+        </ul>
+
+        <h2>11. 권익침해 구제 방법</h2>
+        <p>개인정보 침해로 인한 피해 구제가 필요한 경우 아래 기관에 문의할 수 있습니다.</p>
+        <ul>
+            <li>개인정보 분쟁조정위원회: 1833-6972 (<a href="https://www.kopico.go.kr">www.kopico.go.kr</a>)</li>
+            <li>개인정보 침해신고센터 (KISA): 118 (<a href="https://privacy.kisa.or.kr">privacy.kisa.or.kr</a>)</li>
+            <li>대검찰청 사이버수사과: 1301 (<a href="https://www.spo.go.kr">www.spo.go.kr</a>)</li>
+            <li>경찰청 사이버수사국: 182 (<a href="https://ecrm.police.go.kr">ecrm.police.go.kr</a>)</li>
+        </ul>
+
+        <h2>12. 개인정보처리방침 변경</h2>
+        <p>이 개인정보처리방침은 법령, 정책 또는 앱 기능 변경에 따라 수정될 수 있습니다. 변경 사항은 시행 7일 전에 이 페이지를 통해 공지하며, 시행일을 업데이트합니다.</p>
+
+        <h2>13. 문의</h2>
         <p>📧 <a href="mailto:berry.yoo.dev@gmail.com">berry.yoo.dev@gmail.com</a></p>
 
         <hr id="english">
 
         <h1>Parkit Privacy Policy</h1>
-        <p class="date">Last Updated: March 31, 2026 | Effective Date: March 31, 2026</p>
+        <p class="date">Last Updated: April 6, 2026 | Effective Date: April 6, 2026</p>
 
         <h2>1. Introduction</h2>
         <p>Parkit ("the App") is developed by an individual developer. The App automatically records your parking location by detecting vehicle Bluetooth disconnection.</p>
@@ -155,7 +197,7 @@
             <li><strong>When</strong>: Bluetooth disconnect detection or manual recording (one-time)</li>
             <li><strong>Purpose</strong>: Display parking location and provide directions</li>
             <li><strong>Storage</strong>: Device local (SwiftData)</li>
-            <li><strong>Retention</strong>: Until deleted by user</li>
+            <li><strong>Retention</strong>: Until the purpose of collection is fulfilled or until deleted by user. Immediately destroyed upon app deletion</li>
         </ul>
 
         <h3>2.2 Bluetooth Device Information</h3>
@@ -211,23 +253,59 @@
         <h2>4. Data Sharing</h2>
         <p>The App does not transmit any data to developer servers or third parties. No third-party SDKs are used. When iCloud sync is enabled, data is transmitted only to the user's own Apple iCloud account, subject to Apple's privacy policy.</p>
 
-        <h2>5. Data Deletion</h2>
+        <h2>5. Data Retention and Deletion</h2>
         <ul>
-            <li>Delete individual records in-app.</li>
-            <li>Uninstalling removes all local data from your device.</li>
+            <li>Personal information is destroyed without delay once its purpose has been fulfilled.</li>
+            <li>Delete individual records directly in the app.</li>
+            <li>Uninstalling the app causes iOS to permanently and irreversibly remove all data within the app sandbox.</li>
             <li>If iCloud sync was used, iCloud data can be deleted separately via Settings > iCloud Storage.</li>
         </ul>
 
-        <h2>6. Children's Privacy</h2>
-        <p>The App does not intentionally collect information from children under 14.</p>
+        <h2>6. Your Rights</h2>
+        <p>You may exercise the following rights at any time:</p>
+        <ul>
+            <li>Request access to your personal information</li>
+            <li>Request correction or deletion of your personal information</li>
+            <li>Request suspension of processing of your personal information</li>
+        </ul>
+        <p>You can exercise these rights directly within the app (deleting records, changing permission settings, disabling iCloud sync) or by contacting us at the email below. We will act on your request without delay.</p>
+        <p>📧 <a href="mailto:berry.yoo.dev@gmail.com">berry.yoo.dev@gmail.com</a></p>
 
-        <h2>7. Security</h2>
-        <p>All data is protected by iOS app sandbox. When iCloud sync is used, Apple's encrypted transmission is applied.</p>
+        <h2>7. Consequences of Permission Denial</h2>
+        <p>You may use the app even if you deny permissions, but some features may be limited:</p>
+        <ul>
+            <li><strong>Location denied</strong>: Cannot record GPS parking location or display on map</li>
+            <li><strong>Bluetooth denied</strong>: Cannot auto-detect vehicle Bluetooth disconnection</li>
+            <li><strong>Camera denied</strong>: Cannot use OCR to auto-recognize parking signs</li>
+            <li><strong>Notification denied</strong>: Cannot receive parking record notifications</li>
+        </ul>
 
-        <h2>8. Changes</h2>
-        <p>Updates will be posted on this page with an updated effective date.</p>
+        <h2>8. Children's Privacy</h2>
+        <p>The App does not intentionally collect information from children under 13. If we discover that personal information from a child under 13 has been collected, we will immediately delete it.</p>
 
-        <h2>9. Contact</h2>
+        <h2>9. Security</h2>
+        <p>The App implements the following security measures:</p>
+        <ul>
+            <li>Data isolation and protection via iOS app sandbox</li>
+            <li>On-device file encryption via iOS Data Protection</li>
+            <li>End-to-end encrypted transmission when using iCloud sync</li>
+            <li>Face ID/Touch ID processed in iOS Secure Enclave; the App does not access biometric data</li>
+        </ul>
+
+        <h2>10. Do Not Track</h2>
+        <p>The App does not track users across third-party websites or services. The App does not respond to Do Not Track (DNT) signals as it does not perform any tracking.</p>
+
+        <h2>11. Data Controller</h2>
+        <ul>
+            <li><strong>Name</strong>: Hyeongjin Yoo</li>
+            <li><strong>Role</strong>: Individual Developer</li>
+            <li><strong>Contact</strong>: <a href="mailto:berry.yoo.dev@gmail.com">berry.yoo.dev@gmail.com</a></li>
+        </ul>
+
+        <h2>12. Changes</h2>
+        <p>This Privacy Policy may be updated due to changes in laws, policies, or app features. Changes will be posted on this page at least 7 days before taking effect, with an updated effective date.</p>
+
+        <h2>13. Contact</h2>
         <p>📧 <a href="mailto:berry.yoo.dev@gmail.com">berry.yoo.dev@gmail.com</a></p>
     </div>
 </body>
