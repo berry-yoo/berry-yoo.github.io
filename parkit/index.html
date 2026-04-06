@@ -11,6 +11,7 @@
     <meta property="og:url" content="https://berry-yoo.github.io/parkit/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="apple-itunes-app" content="app-id=6761355273">
     <link rel="icon" type="image/png" href="images/app-icon.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -76,18 +77,12 @@
             line-height: 1.5;
         }
 
-        .hero-badge {
+        .app-store-badge {
             display: inline-block;
-            padding: 12px 28px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 600;
-            color: white;
+            transition: transform 0.2s;
         }
+        .app-store-badge:hover { transform: scale(1.05); }
+        .app-store-badge img { height: 50px; }
 
         /* Features */
         .features {
@@ -244,7 +239,9 @@
         <img src="images/app-icon.png" alt="파킷 앱 아이콘" class="hero-icon">
         <h1>파킷</h1>
         <p>차에서 내리면<br>자동으로 주차 위치를 기록해요</p>
-        <span class="hero-badge">App Store 출시 예정</span>
+        <a class="app-store-badge" href="https://apps.apple.com/kr/app/id6761355273" target="_blank" rel="noopener">
+            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/ko-kr?size=250x83" alt="App Store에서 다운로드">
+        </a>
     </section>
 
     <!-- Features -->
